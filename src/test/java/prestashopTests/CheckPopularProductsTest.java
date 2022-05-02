@@ -29,12 +29,11 @@ public class CheckPopularProductsTest extends BaseTest {
     // Check that every product has name field
     List<String> productsWithNameValue = mainPage.getNamesProducts(
         productsFromPopularProductsSection);
-    softAssertions.assertThat(productsWithNameValue)
+    softAssertions.assertThat(productsWithNameValue.size())
         .as("We are waiting quantity products with names from Popular Products Section: ["
-            + quantityProductsFromPopularProductsSection + "], and received: ["
+            + productsFromPopularProductsSection.size() + "], and received: ["
             + productsWithNameValue.size() + "] with such names: " + productsWithNameValue)
-        .hasSameElementsAs(mainPage.getNamesProducts(
-            productsFromPopularProductsSection));
+        .isEqualTo(productsFromPopularProductsSection.size());
 
     // Check that every product has price
     List<String> productsWithPriceValue = mainPage.getPriceProductsFromPopularProductsSection(

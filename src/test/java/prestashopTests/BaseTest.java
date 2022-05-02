@@ -22,8 +22,8 @@ public class BaseTest {
 
     String browser = System.getProperty("browser");
 
-//    int browserHeight = Integer.parseInt(System.getProperty("height"));
 //    int browserWidth = Integer.parseInt(System.getProperty("width"));
+//    int browserHeight = Integer.parseInt(System.getProperty("height"));
 
     // property for setup browser
     switch (browser) {

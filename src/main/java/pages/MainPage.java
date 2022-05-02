@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import utils.Utils;
 
 public class MainPage extends BasePage {
 
   private final By pageLoadingProcess = By.id("loadingMessage");
   private final By productContainer = By.xpath("//div[contains(@class,'thumbnail-container')]");
+  private final By allProductsButton = By.xpath("//a[contains(@class, 'all-product-link')]");
 
   // open MAIN page
   @Step("Open [Main] page")
@@ -64,5 +66,12 @@ public class MainPage extends BasePage {
       }
     }
     return priceProductsPopularProductsSection;
+  }
+
+  // click on All Products button from Popular Products section
+  public AllProductsPage clickOnAllProductsButton() {
+    Utils.scrollToElement(getDriver(), allProductsButton);
+    find(allProductsButton).click();
+    return new AllProductsPage();
   }
 }

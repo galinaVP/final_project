@@ -137,5 +137,10 @@ public abstract class BasePage {
     return new WebDriverWait(getDriver(), Duration.ofSeconds(second)).until(
         ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
   }
+
+  public static boolean waitRefreshed(By locator, int second) {
+    return new WebDriverWait(getDriver(), Duration.ofSeconds(second)).until(
+        ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(getDriver().findElement(locator))));
+  }
   ///// waiters *** end //////
 }
