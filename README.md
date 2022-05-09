@@ -6,7 +6,7 @@ To run the tests with maven, enter the command in the terminal:
 
 ``` mvn clean test ```
 
-To parameterize the start of tests, enter the command:
+To parameterize test run, enter the command:
 ```
 mvn clean test -Dsuite=testng -Dbrowser=chrome -DthreadCount=2 -DbrowserWidth=1920 -DbrowserHeight=1080
 ```
