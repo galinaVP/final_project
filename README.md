@@ -34,6 +34,6 @@ mvn clean test -Dsuite=testng -Dbrowser=chrome -DthreadCount=2 -DbrowserWidth=19
 ## Running Reports
 To generate a report, enter the command:
 
-``` mvn allure::serve ``` 
+``` mvn allure::serve ```
 
 > ***Слава Україні!*** 
