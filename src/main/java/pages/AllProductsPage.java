@@ -35,6 +35,7 @@ public class AllProductsPage extends BasePage {
   }
 
   // get names products from All Products page
+  @Step("Get names products from All Products page")
   public List<String> getNamesProductsFromPage(List<ProductBlock> products) {
     List<String> namesProducts = new ArrayList<>();
     for (ProductBlock product : products) {
@@ -44,6 +45,7 @@ public class AllProductsPage extends BasePage {
   }
 
   // get price products from All Products page
+  @Step("Get price products from All Products page")
   public List<Double> getPriceProductsFromPage(List<ProductBlock> products) {
     List<Double> priceProducts = new ArrayList<>();
     for (ProductBlock product : products) {
@@ -53,6 +55,7 @@ public class AllProductsPage extends BasePage {
   }
 
   // check that sorting "Name A to Z" is correct
+  @Step("Check that sorting [Name A to Z] is correct")
   public boolean isSortedNamesFromAToZ(List<ProductBlock> products) {
     List<String> namesProducts = getNamesProductsFromPage(products);
     List<String> copy = new ArrayList<>(namesProducts);
@@ -61,6 +64,7 @@ public class AllProductsPage extends BasePage {
   }
 
   // check that sorting "Name Z to A" is correct
+  @Step("Check that sorting [Name Z to A] is correct")
   public boolean isSortedNameFromZToA(List<ProductBlock> products) {
     List<String> namesProducts = getNamesProductsFromPage(products);
     List<String> copy = new ArrayList<>(namesProducts);
@@ -69,6 +73,7 @@ public class AllProductsPage extends BasePage {
   }
 
   // check that sorting "Price, low to high" is correct
+  @Step("Check that sorting [Price, low to high] is correct")
   public boolean isSortedPriceFromLowToHigh(List<ProductBlock> products) {
     List<Double> priceProducts = getPriceProductsFromPage(products);
     List<Double> copy = new ArrayList<>(priceProducts);
@@ -77,6 +82,7 @@ public class AllProductsPage extends BasePage {
   }
 
   // check that sorting "Price, high to low" is correct
+  @Step("Check that sorting [Price, high to low] is correct")
   public boolean isSortedPriceFromHighToLow(List<ProductBlock> products) {
     List<Double> priceProducts = getPriceProductsFromPage(products);
     List<Double> copy = new ArrayList<>(priceProducts);

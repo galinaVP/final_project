@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import core.EventDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -21,10 +22,6 @@ public class BaseTest {
     WebDriver driver;
 
     String browser = System.getProperty("browser");
-
-//    int browserWidth = Integer.parseInt(System.getProperty("width"));
-//    int browserHeight = Integer.parseInt(System.getProperty("height"));
-
     // property for setup browser
     switch (browser) {
       case "firefox":
@@ -45,8 +42,11 @@ public class BaseTest {
     WebDriverListener listener = new EventDriver();
     WebDriver decorated = new EventFiringDecorator(listener).decorate(driver);
     BasePage.setDriverThreadLocal(decorated);
-    BasePage.getDriver().manage().window().maximize();
-//    BasePage.getDriver().manage().window().setSize(new Dimension(browserWidth,browserHeight));
+//    BasePage.getDriver().manage().window().maximize();
+    Integer browserWidth = Integer.parseInt(System.getProperty("browserWidth"));
+    Integer browserHeight = Integer.parseInt(System.getProperty("browserHeight"));
+    BasePage.getDriver().manage().window().setPosition(new Point(0, 0));
+    BasePage.getDriver().manage().window().setSize(new Dimension(browserWidth, browserHeight));
   }
 
   protected Faker faker = new Faker();

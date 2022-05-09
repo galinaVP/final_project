@@ -14,6 +14,9 @@
     <aspectj.version>1.8.10</aspectj.version>
     <browser>chrome</browser>
     <threadCount>1</threadCount>
+    <suite>testng</suite>
+    <browserWidth>1920</browserWidth>
+    <browserHeight>1080</browserHeight>
   </properties>
 
   <dependencies>
@@ -94,8 +97,9 @@
             <parallel>tests</parallel>
             <threadCount>${threadCount}</threadCount>
             <systemPropertyVariables>
-              <propertyName>browser</propertyName>
               <browser>${browser}</browser>
+              <browserWidth>${browserWidth}</browserWidth>
+              <browserHeight>${browserHeight}</browserHeight>
             </systemPropertyVariables>
             <perCoreThreadCount>false</perCoreThreadCount>
           </configuration>

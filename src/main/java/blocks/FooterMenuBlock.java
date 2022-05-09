@@ -13,7 +13,6 @@ public class FooterMenuBlock {
 
   @Getter
   private static WebDriver driver;
-
   private final By pricesDropFooterMenuButton = By.id("link-product-page-prices-drop-1");
 
   public FooterMenuBlock(WebDriver webDriver) {

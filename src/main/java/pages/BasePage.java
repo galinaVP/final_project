@@ -18,7 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public abstract class BasePage {
 
   private static final ThreadLocal<WebDriver> DRIVER_THREAD_LOCAL = new ThreadLocal<>();
-  private static Actions actions;
+  protected static Actions actions;
 
   // setter box DRIVER_THREAD_LOCAL
   public static void setDriverThreadLocal(WebDriver driver) {
@@ -37,7 +37,6 @@ public abstract class BasePage {
 
   // getter for SubscribeBlock
   private SubscribeBlock subscribeBlock = new SubscribeBlock(getDriver());
-
 
   public SubscribeBlock getSubscribeBlock() {
     return subscribeBlock;
@@ -59,12 +58,14 @@ public abstract class BasePage {
 
   // getter for MainMenuBlock
   private MainMenuBlock mainMenuBlock = new MainMenuBlock(getDriver());
+
   public MainMenuBlock getMainMenuBlock() {
     return mainMenuBlock;
   }
 
   // getter for FooterMenuBlock
-  private FooterMenuBlock footerMenuBlock = new FooterMenuBlock(getDriver());
+  private final FooterMenuBlock footerMenuBlock = new FooterMenuBlock(getDriver());
+
   public FooterMenuBlock getFooterMenuBlock() {
     return footerMenuBlock;
   }
@@ -75,37 +76,17 @@ public abstract class BasePage {
   }
 
   // actions Move to element
-  public static void moveToElement(By locator) {
+  public static void moveToWebElement(WebElement element) {
     actions = new Actions(getDriver());
-    boolean result = false;
     int attempts = 0;
-    while(attempts < 1) {
-      try {
-        actions.moveToElement(getDriver().findElement(locator)).build().perform();
-        result = true;
-        break;
-      } catch(StaleElementReferenceException e) {
-      }
-      attempts++;
-    }
-//    return result;
-  }
-
-  // actions Move to element
-  public static boolean moveToWebElement(WebElement element) {
-    actions = new Actions(getDriver());
-    boolean result = false;
-    int attempts = 0;
-    while(attempts < 2) {
+    while (attempts < 2) {
       try {
         actions.moveToElement(element).build().perform();
-        result = true;
         break;
-      } catch(StaleElementReferenceException e) {
+      } catch (StaleElementReferenceException e) {
       }
       attempts++;
     }
-    return result;
   }
 
   ///// waiters *** begin //////
@@ -121,7 +102,7 @@ public abstract class BasePage {
         ExpectedConditions.visibilityOfElementLocated(locator));
   }
 
-  // waiter visibilityOfElementLocated
+  // waiter elementToBeClickable
   public static WebElement wailElementToBeClickable(By locator, int second) {
     return new WebDriverWait(getDriver(), Duration.ofSeconds(second)).until(
         ExpectedConditions.elementToBeClickable(locator));
@@ -130,7 +111,7 @@ public abstract class BasePage {
   // waiter visibilityOfAllElementsLocated
   public static List<WebElement> visibilityOfAllElementsLocated(By locator, int second) {
     return new WebDriverWait(getDriver(), Duration.ofSeconds(second)).until(
-        ExpectedConditions.visibilityOfAllElements (getDriver().findElements(locator)));
+        ExpectedConditions.visibilityOfAllElements(getDriver().findElements(locator)));
   }
 
   public static List<WebElement> presenceOfAllElementsLocatedBy(By locator, int second) {
@@ -140,7 +121,20 @@ public abstract class BasePage {
 
   public static boolean waitRefreshed(By locator, int second) {
     return new WebDriverWait(getDriver(), Duration.ofSeconds(second)).until(
-        ExpectedConditions.refreshed(ExpectedConditions.stalenessOf(getDriver().findElement(locator))));
+        ExpectedConditions.refreshed(
+            ExpectedConditions.stalenessOf(getDriver().findElement(locator))));
+  }
+
+  public static WebElement waitRefreshedClickable(By locator, int second) {
+    return new WebDriverWait(getDriver(), Duration.ofSeconds(second)).until(
+        ExpectedConditions.refreshed(
+            ExpectedConditions.elementToBeClickable(locator)));
+  }
+
+  public static List<WebElement> visibilityOfNestedElementsLocatedBy(By parent, By child,
+      int second) {
+    return new WebDriverWait(getDriver(), Duration.ofSeconds(second)).until(
+        ExpectedConditions.visibilityOfNestedElementsLocatedBy(parent, child));
   }
   ///// waiters *** end //////
 }

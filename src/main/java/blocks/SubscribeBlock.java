@@ -15,7 +15,6 @@ public class SubscribeBlock {
 
   @Getter
   private static WebDriver driver;
-
   private final By subscribeContainer = By.id("blockEmailSubscription_displayFooterBefore");
   private final By textNearTheEmailField = By.id("block-newsletter-label");
   private final By textUnderEmailField = By.xpath(

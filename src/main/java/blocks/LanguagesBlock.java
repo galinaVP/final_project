@@ -15,7 +15,6 @@ public class LanguagesBlock {
 
   @Getter
   private static WebDriver driver;
-
   private final By languagesList = By.xpath("//ul[@aria-labelledby='language-selector-label']/li");
 
   public LanguagesBlock(WebDriver webDriver) {
@@ -28,7 +27,6 @@ public class LanguagesBlock {
     List<String> allLanguagesValues = new ArrayList<>();
     List<WebElement> allLanguagesElements = BasePage.presenceOfAllElementsLocatedBy(languagesList,
         10);
-//    List<WebElement> languagesElements = getDriver().findElements(languagesList);
     for (WebElement languageElement : allLanguagesElements) {
       allLanguagesValues.add(languageElement.getText());
     }

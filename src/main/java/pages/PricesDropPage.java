@@ -1,6 +1,7 @@
 package pages;
 
 import blocks.ProductBlock;
+import io.qameta.allure.Step;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class PricesDropPage extends BasePage {
   }
 
   // get Names all products from popular products section on Main page
+  @Step("Get Names all products from popular products section on Main page")
   public List<String> getNamesProducts(List<ProductBlock> products) {
     List<String> namesProductsPopularProductsSection = new ArrayList<>();
     for (ProductBlock product : products) {
@@ -35,6 +37,7 @@ public class PricesDropPage extends BasePage {
   }
 
   // get Names all products has old and new price from Prices Drop page
+  @Step("Get Names all products has old and new price from Prices Drop page")
   public List<String> getAllProductsWithOldAndNewPrice(List<ProductBlock> products) {
     List<String> productsWithOldAndNewPrice = new ArrayList<>();
     for (ProductBlock product : products) {
@@ -46,6 +49,7 @@ public class PricesDropPage extends BasePage {
   }
 
   // get Names all products that promo price calculates correct
+  @Step("Get Names all products that promo price calculates correct")
   public List<String> getAllProductsWithCorrectCalculatesPromoPrice(List<ProductBlock> products) {
     List<String> productsWithCorrectCalculatesPromoPrice = new ArrayList<>();
     for (ProductBlock product : products) {

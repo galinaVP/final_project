@@ -9,7 +9,7 @@ import pages.MainPage;
 
 public class SortingProductsTest extends BaseTest {
 
-  @Test
+  @Test(description = "Check that sorting products is correct test")
   public void checkThatSortingProductsIsCorrectTest() {
 
     MainPage mainPage = new MainPage();

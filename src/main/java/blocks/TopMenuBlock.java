@@ -13,7 +13,6 @@ public class TopMenuBlock {
 
   @Getter
   private static WebDriver driver;
-
   private final By languagesMenuButton = By.xpath("//button[@aria-label='Language dropdown']");
   private final By signInButton = By.xpath("//span[text()='Sign in']");
   private final By userNameText = By.xpath(

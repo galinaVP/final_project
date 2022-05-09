@@ -4,26 +4,28 @@
   <listeners>
     <listener class-name="core.TestListener"/>
   </listeners>
-  <test name="Registration tests">
+  <test name="Registration and Subscribe tests">
     <classes>
-      <!--      <class name="prestashopTests.RegistrationWithValidDataTest"/>-->
-      <!--      <class name="prestashopTests.RegistrationWithInvalidDataTest"/>-->
+      <class name="prestashopTests.RegistrationWithValidDataTest"/>
+      <class name="prestashopTests.RegistrationWithInvalidDataTest"/>
+      <class name="prestashopTests.SubscribeToTheNewsletterTest"/>
     </classes>
   </test>
 
   <test name="Functions site tests">
     <classes>
-      <class name="prestashopTests.SubscribeToTheNewsletterTest"/>
       <class name="prestashopTests.CheckLanguagesFromSiteTest"/>
       <class name="prestashopTests.SubMenuExistsInMainMenuTest"/>
+      <class name="prestashopTests.SortingProductsTest"/>
     </classes>
   </test>
 
   <test name="Products tests">
     <classes>
-      <!--      <class name="prestashopTests.CheckPopularProductsTest"/>-->
+      <class name="prestashopTests.CheckPopularProductsTest"/>
       <class name="prestashopTests.PriceDropProductTests"/>
-      <class name="prestashopTests.SortingProductsTest"/>
+      <class name="prestashopTests.AddToCartTest"/>
+      <class name="prestashopTests.CheckoutEndToEndTest"/>
     </classes>
   </test>
 </suite>

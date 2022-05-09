@@ -21,8 +21,8 @@ public class RegistrationWithValidDataTest extends BaseTest {
         .enteredEmailAs(faker.internet().emailAddress())
         .enteredPasswordAs(faker.internet().password())
         .enteredBirthdateInputAs(faker.date().birthday())
-        .clickCustomerDataPrivacyCheckbox()
-        .clickSaveButton()
+        .clickOnCustomerDataPrivacyCheckbox()
+        .clickOnSaveButton()
         .getTopMenuBlock().getUserNameAfterLoginOnSite();
 
     Assertions.assertThat(actualUserName)

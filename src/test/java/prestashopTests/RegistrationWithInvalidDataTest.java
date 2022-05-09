@@ -24,8 +24,8 @@ public class RegistrationWithInvalidDataTest extends BaseTest {
         .enteredEmailAs(faker.internet().emailAddress())
         .enteredPasswordAs(faker.internet().password())
         .enteredBirthdateInputAs(faker.date().birthday())
-        .clickCustomerDataPrivacyCheckbox()
-        .clickSaveButtonWithInvalidData();
+        .clickOnCustomerDataPrivacyCheckbox()
+        .clickOnSaveButtonWithInvalidData();
 
     // Check that 'First name' highlighted in red
     String actualValueBorderColor = registerAccountPage.getValueBorderOfTheSelectedColor();

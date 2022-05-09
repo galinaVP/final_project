@@ -7,12 +7,11 @@ import org.openqa.selenium.By;
 
 public class RegisterAccountPage extends BasePage {
 
-  private final By socialTitleCheckbox = By.xpath("//div[contains(@class, 'form-control-valign')]");
-  private final By fistNameInput = By.id("field-firstname");
+  private final By firstNameInput = By.id("field-firstname");
   private final By lastNameInput = By.id("field-lastname");
   private final By emailInput = By.id("field-email");
   private final By passwordInput = By.id("field-password");
-  private final By BirthdateInput = By.id("field-birthday");
+  private final By birthdateInput = By.id("field-birthday");
   private final By customerDataPrivacyCheckbox = By.xpath("//input[@name='customer_privacy']");
   private final By saveButton = By.xpath("//button[contains(@class, 'form-control-submit')]");
   private final By alertDangerMessage = By.xpath("//div[@class='help-block']//li[1]");
@@ -20,7 +19,7 @@ public class RegisterAccountPage extends BasePage {
   // Method for input FirstName
   @Step("Entered First name as [{firstName}]")
   public RegisterAccountPage enteredFirstNameAs(String firstName) {
-    find(fistNameInput).sendKeys(firstName);
+    find(firstNameInput).sendKeys(firstName);
     return this;
   }
 
@@ -50,35 +49,35 @@ public class RegisterAccountPage extends BasePage {
   public RegisterAccountPage enteredBirthdateInputAs(Date birthdate) {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
     String birthdateFormat = simpleDateFormat.format(birthdate);
-    find(BirthdateInput).sendKeys(birthdateFormat);
+    find(birthdateInput).sendKeys(birthdateFormat);
     return this;
   }
 
   @Step("Click [Customer data privacy] checkbox")
-  public RegisterAccountPage clickCustomerDataPrivacyCheckbox() {
+  public RegisterAccountPage clickOnCustomerDataPrivacyCheckbox() {
     find(customerDataPrivacyCheckbox).click();
     return this;
   }
 
   @Step("Click [Save] button")
-  public MainPage clickSaveButton(){
+  public MainPage clickOnSaveButton() {
     find(saveButton).click();
     return new MainPage();
   }
 
   @Step("Click [Save] button")
-  public RegisterAccountPage clickSaveButtonWithInvalidData(){
+  public RegisterAccountPage clickOnSaveButtonWithInvalidData() {
     find(saveButton).click();
     return this;
   }
 
-  @Step("Get value border of the selected color ")
-  public String getValueBorderOfTheSelectedColor(){
+  @Step("Get value border of the selected color")
+  public String getValueBorderOfTheSelectedColor() {
     return find(saveButton).getCssValue("outline-color");
   }
 
   @Step("Get alert danger message from invalid data field")
-  public String getAlertDangerMessageFromInvalidDataField(){
+  public String getAlertDangerMessageFromInvalidDataField() {
     return find(alertDangerMessage).getText();
   }
 }

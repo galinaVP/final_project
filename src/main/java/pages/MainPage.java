@@ -36,6 +36,7 @@ public class MainPage extends BasePage {
   }
 
   // get Names all products from popular products section on Main page
+  @Step("Get Names all products from popular products section on Main page")
   public List<String> getNamesProducts(List<ProductBlock> products) {
     List<String> namesProductsPopularProductsSection = new ArrayList<>();
     for (ProductBlock product : products) {
@@ -47,6 +48,7 @@ public class MainPage extends BasePage {
   }
 
   // get all products has price from popular products section on Main page
+  @Step("Get all products has price from popular products section on Main page")
   public List<String> getPriceProductsFromPopularProductsSection(List<ProductBlock> products) {
     List<String> priceProductsPopularProductsSection = new ArrayList<>();
     for (ProductBlock product : products) {
@@ -58,7 +60,9 @@ public class MainPage extends BasePage {
   }
 
   // get all products has prices bigger than 0.00 from popular products section on Main page
-  public List<String> getProductsFromPopularProductsSectionWhenPricesBiggerZero(List<ProductBlock> products) {
+  @Step("Get all products has prices bigger than 0.00 from popular products section on Main page")
+  public List<String> getProductsFromPopularProductsSectionWhenPricesBiggerZero(
+      List<ProductBlock> products) {
     List<String> priceProductsPopularProductsSection = new ArrayList<>();
     for (ProductBlock product : products) {
       if (product.getPriceDouble() > 0) {
@@ -69,6 +73,7 @@ public class MainPage extends BasePage {
   }
 
   // click on All Products button from Popular Products section
+  @Step("Click on [All Products] button from Popular Products section")
   public AllProductsPage clickOnAllProductsButton() {
     Utils.scrollToElement(getDriver(), allProductsButton);
     find(allProductsButton).click();
