@@ -51,7 +51,8 @@ public class CheckPopularProductsTest extends BaseTest {
     softAssertions.assertThat(productsWhenPricesBiggerZero)
         .as("We are waiting quantity products with prices bigger than 0.00 from Popular Products Section: ["
             + quantityProductsFromPopularProductsSection + "], and received: ["
-            + productsWhenPricesBiggerZero.size() + "] with such prices: " + productsWhenPricesBiggerZero)
+            + productsWhenPricesBiggerZero.size() + "] with such prices: "
+            + productsWhenPricesBiggerZero)
         .hasSameElementsAs(mainPage.getNamesProducts(
             productsFromPopularProductsSection));
 

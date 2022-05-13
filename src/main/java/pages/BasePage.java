@@ -108,29 +108,27 @@ public abstract class BasePage {
         ExpectedConditions.elementToBeClickable(locator));
   }
 
-  // waiter visibilityOfAllElementsLocated
-  public static List<WebElement> visibilityOfAllElementsLocated(By locator, int second) {
-    return new WebDriverWait(getDriver(), Duration.ofSeconds(second)).until(
-        ExpectedConditions.visibilityOfAllElements(getDriver().findElements(locator)));
-  }
-
+  // waiter presenceOfAllElementsLocatedBy
   public static List<WebElement> presenceOfAllElementsLocatedBy(By locator, int second) {
     return new WebDriverWait(getDriver(), Duration.ofSeconds(second)).until(
         ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
   }
 
+  // waiter refreshed / stalenessOf
   public static boolean waitRefreshed(By locator, int second) {
     return new WebDriverWait(getDriver(), Duration.ofSeconds(second)).until(
         ExpectedConditions.refreshed(
             ExpectedConditions.stalenessOf(getDriver().findElement(locator))));
   }
 
+  // waiter elementToBeClickable
   public static WebElement waitRefreshedClickable(By locator, int second) {
     return new WebDriverWait(getDriver(), Duration.ofSeconds(second)).until(
         ExpectedConditions.refreshed(
             ExpectedConditions.elementToBeClickable(locator)));
   }
 
+  // waiter visibilityOfNestedElementsLocatedBy
   public static List<WebElement> visibilityOfNestedElementsLocatedBy(By parent, By child,
       int second) {
     return new WebDriverWait(getDriver(), Duration.ofSeconds(second)).until(

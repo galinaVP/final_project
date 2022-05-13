@@ -9,7 +9,7 @@ public class AddToCartTest extends BaseTest {
 
   String textToSearch = "Bear";
   String product = "Brown Bear Notebook";
-  int quantityOfProduct = 5;
+  int quantityOfProducts = 5;
   String paperTypeValue = "Doted";
   String expectedSuccessfullyAddedProductToCartTitle = "Product successfully added to your shopping cart";
 
@@ -20,7 +20,7 @@ public class AddToCartTest extends BaseTest {
         .getMainMenuBlock().enterSearchAs(textToSearch)
         .clickOnProduct(product)
         .selectPaperTypeProduct(paperTypeValue)
-        .setQuantityOfProduct(quantityOfProduct)
+        .setQuantityOfProduct(quantityOfProducts)
         .clickAddToCartButton()
         .getPopupTitle();
 
@@ -44,9 +44,9 @@ public class AddToCartTest extends BaseTest {
 
     // Check that correct 'Quantity' is shown on the left side of the window
     softAssertions.assertThat(actualQuantityProductValue)
-        .as("We are waiting quantity: [" + quantityOfProduct
+        .as("We are waiting quantity: [" + quantityOfProducts
             + "], and received: [" + actualQuantityProductValue + "]")
-        .isEqualTo(quantityOfProduct);
+        .isEqualTo(quantityOfProducts);
 
     // Check that 'Total' calculated correct
     softAssertions.assertThat(productInfoPage.isTotalPriceProductsCorrect())

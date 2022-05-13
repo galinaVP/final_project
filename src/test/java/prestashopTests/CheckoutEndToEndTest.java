@@ -56,7 +56,7 @@ public class CheckoutEndToEndTest extends BaseTest {
         .continueConfirmPersonButton()
         .enterAddressInputAs(faker.address().streetAddress())
         .enterPostcodeAs("00001")
-        .enteredCityAs(faker.address().city())
+        .enterCityAs(faker.address().city())
         .clickOnContinueConfirmAddressesButton()
         .selectShippingMethodCheckbox(shippingMethod)
         .clickOnContinueConfirmDeliveryOptionButton()

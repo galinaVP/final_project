@@ -42,7 +42,6 @@ public class BaseTest {
     WebDriverListener listener = new EventDriver();
     WebDriver decorated = new EventFiringDecorator(listener).decorate(driver);
     BasePage.setDriverThreadLocal(decorated);
-//    BasePage.getDriver().manage().window().maximize();
     Integer browserWidth = Integer.parseInt(System.getProperty("browserWidth"));
     Integer browserHeight = Integer.parseInt(System.getProperty("browserHeight"));
     BasePage.getDriver().manage().window().setPosition(new Point(0, 0));

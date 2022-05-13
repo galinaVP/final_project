@@ -105,9 +105,9 @@ public class ProductInfoPage extends BasePage {
   @Step("Select color product value: [{color}]")
   public ProductInfoPage selectColorProductValue(String color) {
     List<WebElement> colorsValue = getDriver().findElements(colorProductValue);
-    for (WebElement element : colorsValue) {
-      if (element.getAttribute("title").equalsIgnoreCase(color)) {
-        element.click();
+    for (WebElement colorValue : colorsValue) {
+      if (colorValue.getAttribute("title").equalsIgnoreCase(color)) {
+        colorValue.click();
       }
     }
     return this;

@@ -1,4 +1,4 @@
-# README
+# FINAL PROJECT
 
 ## Running tests
 

@@ -92,7 +92,7 @@ public class PersonalInformationOrderPage extends BasePage {
   }
 
   @Step("Entered City as [{city)}]")
-  public PersonalInformationOrderPage enteredCityAs(String city) {
+  public PersonalInformationOrderPage enterCityAs(String city) {
     find(cityInput).sendKeys(city);
     return this;
   }
