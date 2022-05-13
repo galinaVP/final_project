@@ -14,7 +14,6 @@ public class Utils {
   // Method for Scroll to element
   @Step("Scroll")
   public static void scrollToElement(WebDriver driver, By element) {
-//    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(element));
     actions = new Actions(driver);
     int attempts = 0;
     while (attempts < 2) {
