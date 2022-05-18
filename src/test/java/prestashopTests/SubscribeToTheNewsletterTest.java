@@ -14,14 +14,12 @@ public class SubscribeToTheNewsletterTest extends BaseTest {
   @Test(description = "Check that text from subscribe block test")
   public void checkThatTextFromSubscribeBlockTest() {
     MainPage mainPage = new MainPage();
-    SoftAssertions softAssertions = new SoftAssertions();
-
-    SubscribeBlock textsFieldsForSubscribeBlock = mainPage.openMainPage().getSubscribeBlock()
-        .getTextsFieldsForSubscribeBlock();
+    SubscribeBlock textsFieldsForSubscribeBlock = mainPage.openMainPage().getSubscribeBlock();
 
     //  check that text near the email field
     String actualTextNearTheEmailField = textsFieldsForSubscribeBlock.getTextNearTheEmailField();
 
+    SoftAssertions softAssertions = new SoftAssertions();
     softAssertions.assertThat(actualTextNearTheEmailField)
         .as("We are waiting for the text near the email field: [" + expectedTextNearTheEmailField
             + "], and received: ["
@@ -43,7 +41,8 @@ public class SubscribeToTheNewsletterTest extends BaseTest {
     softAssertions.assertThat(actualValueOfTextSubscribeButton)
         .as("We are waiting value of attribute text on Subscribe button: ["
             + expectedValueOfTextSubscribeButton + "], and received: ["
-            + actualValueOfTextSubscribeButton + "]");
+            + actualValueOfTextSubscribeButton + "]")
+        .isEqualTo(expectedValueOfTextSubscribeButton);
 
     softAssertions.assertAll();
   }

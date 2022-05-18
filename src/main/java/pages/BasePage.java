@@ -7,6 +7,7 @@ import blocks.SubscribeBlock;
 import blocks.TopMenuBlock;
 import java.time.Duration;
 import java.util.List;
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+@Getter
 public abstract class BasePage {
 
   private static final ThreadLocal<WebDriver> DRIVER_THREAD_LOCAL = new ThreadLocal<>();
@@ -35,40 +37,11 @@ public abstract class BasePage {
     return DRIVER_THREAD_LOCAL.get();
   }
 
-  // getter for SubscribeBlock
-  private SubscribeBlock subscribeBlock = new SubscribeBlock(getDriver());
-
-  public SubscribeBlock getSubscribeBlock() {
-    return subscribeBlock;
-  }
-
-  // getter for LanguagesBlock
-  private LanguagesBlock languagesBlock = new LanguagesBlock(getDriver());
-
-  public LanguagesBlock getLanguagesBlock() {
-    return languagesBlock;
-  }
-
-  // getter for TopMenuBlock
-  private TopMenuBlock topMenuBlock = new TopMenuBlock(getDriver());
-
-  public TopMenuBlock getTopMenuBlock() {
-    return topMenuBlock;
-  }
-
-  // getter for MainMenuBlock
-  private MainMenuBlock mainMenuBlock = new MainMenuBlock(getDriver());
-
-  public MainMenuBlock getMainMenuBlock() {
-    return mainMenuBlock;
-  }
-
-  // getter for FooterMenuBlock
+  private final SubscribeBlock subscribeBlock = new SubscribeBlock(getDriver());
+  private final LanguagesBlock languagesBlock = new LanguagesBlock(getDriver());
+  private final TopMenuBlock topMenuBlock = new TopMenuBlock(getDriver());
+  private final MainMenuBlock mainMenuBlock = new MainMenuBlock(getDriver());
   private final FooterMenuBlock footerMenuBlock = new FooterMenuBlock(getDriver());
-
-  public FooterMenuBlock getFooterMenuBlock() {
-    return footerMenuBlock;
-  }
 
   // find
   public WebElement find(By locator) {

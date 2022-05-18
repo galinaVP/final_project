@@ -20,42 +20,26 @@ public class CheckPopularProductsTest extends BaseTest {
         .getProductsFromPopularProductsSection();
 
     // Check that 8 products exist in 'POPULAR PRODUCTS' section
-    softAssertions.assertThat(productsFromPopularProductsSection.size())
+    softAssertions.assertThat(productsFromPopularProductsSection)
         .as("We are waiting quantity products from Popular Products Section: ["
             + quantityProductsFromPopularProductsSection + "], and received: ["
             + productsFromPopularProductsSection.size() + "]")
-        .isEqualTo(quantityProductsFromPopularProductsSection);
+        .hasSize(quantityProductsFromPopularProductsSection);
 
     // Check that every product has name field
-    List<String> productsWithNameValue = mainPage.getNamesProducts(
-        productsFromPopularProductsSection);
-    softAssertions.assertThat(productsWithNameValue.size())
-        .as("We are waiting quantity products with names from Popular Products Section: ["
-            + productsFromPopularProductsSection.size() + "], and received: ["
-            + productsWithNameValue.size() + "] with such names: " + productsWithNameValue)
-        .isEqualTo(productsFromPopularProductsSection.size());
+    softAssertions.assertThat(productsFromPopularProductsSection)
+        .as("Every products has not name")
+        .allMatch(n -> n.getNameAsString() != null);
 
     // Check that every product has price
-    List<String> productsWithPriceValue = mainPage.getPriceProductsFromPopularProductsSection(
-        productsFromPopularProductsSection);
-    softAssertions.assertThat(productsWithPriceValue)
-        .as("We are waiting quantity products with price from Popular Products Section: ["
-            + quantityProductsFromPopularProductsSection + "], and received: ["
-            + productsWithPriceValue.size() + "] with such prices: " + productsWithPriceValue)
-        .hasSameElementsAs(mainPage.getNamesProducts(
-            productsFromPopularProductsSection));
+    softAssertions.assertThat(productsFromPopularProductsSection)
+        .as("Every products has not price")
+        .allMatch(p -> p.getPriceDouble() != null);
 
     // Check that all prices bigger than 0.00
-    List<String> productsWhenPricesBiggerZero = mainPage.getProductsFromPopularProductsSectionWhenPricesBiggerZero(
-        productsFromPopularProductsSection);
-    softAssertions.assertThat(productsWhenPricesBiggerZero)
-        .as("We are waiting quantity products with prices bigger than 0.00 from Popular Products Section: ["
-            + quantityProductsFromPopularProductsSection + "], and received: ["
-            + productsWhenPricesBiggerZero.size() + "] with such prices: "
-            + productsWhenPricesBiggerZero)
-        .hasSameElementsAs(mainPage.getNamesProducts(
-            productsFromPopularProductsSection));
-
+    softAssertions.assertThat(productsFromPopularProductsSection)
+        .as("Every products has not prices bigger than 0.00")
+        .allMatch(p -> p.getPriceDouble() > 0.0);
     softAssertions.assertAll();
   }
 }

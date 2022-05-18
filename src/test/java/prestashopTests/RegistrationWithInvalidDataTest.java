@@ -14,7 +14,6 @@ public class RegistrationWithInvalidDataTest extends BaseTest {
   @Test(description = "Check that error massage appears when user enter invalid firstname test")
   public void checkThatErrorMassageAppearsWhenUserEnterInvalidFirstnameTest() {
     MainPage mainPage = new MainPage();
-    SoftAssertions softAssertions = new SoftAssertions();
 
     RegisterAccountPage registerAccountPage = mainPage.openMainPage()
         .getTopMenuBlock().clickOnSignIn()
@@ -27,6 +26,7 @@ public class RegistrationWithInvalidDataTest extends BaseTest {
         .clickOnCustomerDataPrivacyCheckbox()
         .clickOnSaveButtonWithInvalidData();
 
+    SoftAssertions softAssertions = new SoftAssertions();
     // Check that 'First name' highlighted in red
     String actualValueBorderColor = registerAccountPage.getValueBorderOfTheSelectedColor();
     softAssertions.assertThat(actualValueBorderColor)

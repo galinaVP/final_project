@@ -26,77 +26,74 @@ public class MainMenuBlock {
     driver = webDriver;
   }
 
-  // Main menu - CLOTHES button (hover mouse over)
-  @Step("Hover mouse over [CLOTHES] main menu button")
-  public MainMenuBlock hoverMouseOverClothesMainMenuButton() {
-    BasePage.moveToWebElement(BasePage.wailVisibleLocated(clothesMainMenuButton, 10));
-    return this;
+  // Categories enum
+  public enum Categories {
+    CLOTHES,
+    ACCESSORIES,
+    ART;
   }
 
-  // Main menu - ACCESSORIES button (hover mouse over)
-  @Step("Hover mouse over [ACCESSORIES] main menu button")
-  public MainMenuBlock hoverMouseOverAccessoriesMainMenuButton() {
-    BasePage.moveToWebElement(BasePage.wailVisibleLocated(accessoriesMainMenuButton, 10));
-    return this;
-  }
-
-  // Main menu - ART button (hover mouse over)
-  @Step("Hover mouse over [ART] main menu button")
-  public MainMenuBlock hoverMouseOverArtMainMenuButton() {
-    BasePage.moveToWebElement(BasePage.wailVisibleLocated(artMainMenuButton, 10));
+  // Hover mouse over Categories for Main menu
+  @Step("Hover mouse over [{category}}] main menu button")
+  public MainMenuBlock hoverMouseOverOn(Categories category) {
+    switch (category) {
+      case CLOTHES:
+        BasePage.moveToWebElement(BasePage.wailVisibleLocated(clothesMainMenuButton, 10));
+        break;
+      case ACCESSORIES:
+        BasePage.moveToWebElement(BasePage.wailVisibleLocated(accessoriesMainMenuButton, 10));
+        break;
+      case ART:
+        BasePage.moveToWebElement(BasePage.wailVisibleLocated(artMainMenuButton, 10));
+        break;
+    }
     return this;
   }
 
   // get all [Sub menu] categories from Clothes (main menu)
-  @Step("Get all field [Sub menu] from [Clothes] main menu category")
-  public List<String> getAllSubMenuFromClothesMainMenuCategory() {
+  @Step("Get all field [Sub menu] from [{category}}] main menu category")
+  public List<String> getAllSubMenuFromMainMenuCategory(Categories category) {
     List<String> allSubMenuItems = new ArrayList<>();
-    if (BasePage.wailVisibleLocated(clothesMainMenuButton, 10).getAttribute("innerHTML")
-        .contains("top_sub_menu")) {
-      List<WebElement> allSubMenuElements = BasePage.visibilityOfNestedElementsLocatedBy(
-          clothesMainMenuButton,
-          subMenuList, 10);
-      for (WebElement subMenuElement : allSubMenuElements) {
-        allSubMenuItems.add(subMenuElement.getText());
-      }
-    } else {
-      allSubMenuItems = null;
-    }
-    return allSubMenuItems;
-  }
-
-  // get all [Sub menu] categories from Accessories (main menu)
-  @Step("Get all field [Sub menu] from [Accessories] main menu category")
-  public List<String> getAllSubMenuFromAccessoriesMainMenuCategory() {
-    List<String> allSubMenuItems = new ArrayList<>();
-    if (BasePage.wailVisibleLocated(accessoriesMainMenuButton, 10).getAttribute("innerHTML")
-        .contains("top_sub_menu")) {
-      List<WebElement> allSubMenuElements = BasePage.visibilityOfNestedElementsLocatedBy(
-          accessoriesMainMenuButton,
-          subMenuList, 10);
-      for (WebElement subMenuElement : allSubMenuElements) {
-        allSubMenuItems.add(subMenuElement.getText());
-      }
-    } else {
-      allSubMenuItems = null;
-    }
-    return allSubMenuItems;
-  }
-
-  // get all [Sub menu] categories from Art (main menu)
-  @Step("Get all field [Sub menu] from [Art] main menu category")
-  public List<String> getAllSubMenuFromAArtMainMenuCategory() {
-    List<String> allSubMenuItems = new ArrayList<>();
-    if (BasePage.wailVisibleLocated(artMainMenuButton, 10).getAttribute("innerHTML")
-        .contains("top_sub_menu")) {
-      List<WebElement> allSubMenuElements = BasePage.visibilityOfNestedElementsLocatedBy(
-          artMainMenuButton,
-          subMenuList, 10);
-      for (WebElement subMenuElement : allSubMenuElements) {
-        allSubMenuItems.add(subMenuElement.getText());
-      }
-    } else {
-      allSubMenuItems = null;
+    switch (category) {
+      case CLOTHES:
+        if (BasePage.wailVisibleLocated(clothesMainMenuButton, 10).getAttribute("innerHTML")
+            .contains("top_sub_menu")) {
+          List<WebElement> allSubMenuElements = BasePage.visibilityOfNestedElementsLocatedBy(
+              clothesMainMenuButton,
+              subMenuList, 10);
+          for (WebElement subMenuElement : allSubMenuElements) {
+            allSubMenuItems.add(subMenuElement.getText());
+          }
+        } else {
+          allSubMenuItems = null;
+        }
+        break;
+      case ACCESSORIES:
+        if (BasePage.wailVisibleLocated(accessoriesMainMenuButton, 10).getAttribute("innerHTML")
+            .contains("top_sub_menu")) {
+          List<WebElement> allSubMenuElements = BasePage.visibilityOfNestedElementsLocatedBy(
+              accessoriesMainMenuButton,
+              subMenuList, 10);
+          for (WebElement subMenuElement : allSubMenuElements) {
+            allSubMenuItems.add(subMenuElement.getText());
+          }
+        } else {
+          allSubMenuItems = null;
+        }
+        break;
+      case ART:
+        if (BasePage.wailVisibleLocated(artMainMenuButton, 10).getAttribute("innerHTML")
+            .contains("top_sub_menu")) {
+          List<WebElement> allSubMenuElements = BasePage.visibilityOfNestedElementsLocatedBy(
+              artMainMenuButton,
+              subMenuList, 10);
+          for (WebElement subMenuElement : allSubMenuElements) {
+            allSubMenuItems.add(subMenuElement.getText());
+          }
+        } else {
+          allSubMenuItems = null;
+          break;
+        }
     }
     return allSubMenuItems;
   }

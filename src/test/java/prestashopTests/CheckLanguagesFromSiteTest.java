@@ -8,7 +8,7 @@ import pages.MainPage;
 public class CheckLanguagesFromSiteTest extends BaseTest {
 
   int expectedQuantityLanguages = 44;
-  String ukrainianLanguages = "Українська";
+  String ukrainianLanguage = "Українська";
 
   @Test(description = "Check that languages exists in the menu test")
   public void checkThatLanguagesExistsInTheMenuTest() {
@@ -28,10 +28,10 @@ public class CheckLanguagesFromSiteTest extends BaseTest {
         .isEqualTo(expectedQuantityLanguages);
 
     // Check that 'Українська' language exist in dropdown
-    softAssertions.assertThat(allLanguagesFromSite.contains(ukrainianLanguages))
-        .as("We are waiting for the language: [" + ukrainianLanguages
-            + "] in the list, but received: [ false ]")
-        .isTrue();
+    softAssertions.assertThat(allLanguagesFromSite)
+        .as("We are waiting for the language: [" + ukrainianLanguage
+            + "] in the list, but received: [" + allLanguagesFromSite + "]")
+        .contains(ukrainianLanguage);
 
     softAssertions.assertAll();
   }
