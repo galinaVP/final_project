@@ -1,31 +1,13 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="prestashop tests">
+<suite name="XMCY test tasks">
   <listeners>
     <listener class-name="core.TestListener"/>
   </listeners>
-  <test name="Registration and Subscribe tests">
+  <test name="Test tasks">
     <classes>
-      <class name="prestashopTests.RegistrationWithValidDataTest"/>
-      <class name="prestashopTests.RegistrationWithInvalidDataTest"/>
-      <class name="prestashopTests.SubscribeToTheNewsletterTest"/>
-    </classes>
-  </test>
+      <class name="TestTasks.AutomationTestingTask1Test"/>
 
-  <test name="Functions site tests">
-    <classes>
-      <class name="prestashopTests.CheckLanguagesFromSiteTest"/>
-      <class name="prestashopTests.SubMenuExistsInMainMenuTest"/>
-      <class name="prestashopTests.SortingProductsTest"/>
-    </classes>
-  </test>
-
-  <test name="Products tests">
-    <classes>
-      <class name="prestashopTests.CheckPopularProductsTest"/>
-      <class name="prestashopTests.PriceDropProductTests"/>
-      <class name="prestashopTests.AddToCartTest"/>
-      <class name="prestashopTests.CheckoutEndToEndTest"/>
     </classes>
   </test>
 </suite>
